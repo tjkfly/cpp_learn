@@ -1,0 +1,4 @@
+﻿  UseStaticLib.cpp
+D:\self\cpp\library\static library\demo1\Use_StaticLib\UseStaticLib\UseStaticLib\UseStaticLib.cpp(11,5): error C2065: “string”: 未声明的标识符
+D:\self\cpp\library\static library\demo1\Use_StaticLib\UseStaticLib\UseStaticLib\UseStaticLib.cpp(11,12): error C2146: 语法错误: 缺少“;”(在标识符“s”的前面)
+D:\self\cpp\library\static library\demo1\Use_StaticLib\UseStaticLib\UseStaticLib\UseStaticLib.cpp(11,12): error C2065: “s”: 未声明的标识符
