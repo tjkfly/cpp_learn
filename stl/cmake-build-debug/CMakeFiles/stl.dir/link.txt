@@ -1,0 +1,3 @@
+"F:\software\IDE\Clion\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\stl.dir/objects.a
+F:\software\IDE\QT\Tools\mingw730_64\bin\ar.exe cr CMakeFiles\stl.dir/objects.a @CMakeFiles\stl.dir\objects1.rsp
+F:\software\IDE\QT\Tools\mingw730_64\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\stl.dir/objects.a -Wl,--no-whole-archive  -o stl.exe -Wl,--out-implib,libstl.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\stl.dir\linklibs.rsp
