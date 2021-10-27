@@ -6,7 +6,9 @@
 
 #IncludeRegexTransform: 
 
-E:/code/cpp/cpp_single/Template/main.cpp
+E:/code/learn_code/cpp_learn/Template/main.cpp
 iostream
+-
+string
 -
 
