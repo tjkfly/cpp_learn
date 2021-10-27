@@ -1,0 +1,33 @@
+#include <iostream>
+#include <stdlib.h>
+#include <thread>
+
+using namespace std;
+
+class test
+{
+public:
+    void operator()()
+    {
+        cout << "1 + 1 = 2" << endl;
+    }
+
+    void operator()(int x, int y)
+    {
+        cout << "x + y = " << x + y << endl;
+    }
+};
+
+
+int main()
+{
+    test v1;
+    thread t1(v1);
+    t1.join();
+
+    test v2;
+    thread t2(v2,2,3);
+    t2.join();
+
+    return EXIT_SUCCESS;
+}
