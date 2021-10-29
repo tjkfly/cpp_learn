@@ -1,0 +1,21 @@
+#include <iostream>
+#include <thread>
+
+
+class ThreadClass
+{
+public:
+    void operator()()
+    {
+        std::cout<<"this is class object"<<std::endl;
+    }
+};
+
+
+int main()
+{
+    ThreadClass entranceFunc;
+    std::thread t1(entranceFunc);
+    t1.join();
+    return 0;
+}

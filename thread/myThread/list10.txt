@@ -1,0 +1,56 @@
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <mutex>
+#include <queue>
+
+class ThreadClass
+{
+public:
+    ThreadClass()
+    {
+        m_data = 0;
+    }
+    void setData()     //子线程 1 入口
+    {
+        while(1)
+        {
+            m_threadMutex.lock();
+
+            m_dataQueue.push(m_data++);
+            std::cout<<"\r\n set data = "<<m_data<<std::endl;
+
+            m_threadMutex.unlock();
+            std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        }
+    }
+    void readData()     //子线程 2 入口
+    {
+        while (1)
+        {
+            m_threadMutex.lock();
+            if(!m_dataQueue.empty())
+            {
+                auto x = m_dataQueue.front();
+                m_dataQueue.pop();
+                std::cout<<"\r\n data now is "<<x<<std::endl;
+            }
+            m_threadMutex.unlock();
+            std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        }
+    }
+private:
+    int m_data;
+    std::queue<int> m_dataQueue;
+    std::mutex m_threadMutex;
+};
+int main()
+{
+    ThreadClass T;
+    //注意参数的传递方式，先传入入口函数，然后传入类对象的this指针
+    std::thread t1(&ThreadClass::setData,&T);
+    std::thread t2(&ThreadClass::readData,&T);
+    t1.join();
+    t2.join();
+    return 0;
+}

@@ -16,7 +16,7 @@ public:
         while(1)
         {
             std::cout<<"set data: ";
-            std::lock_guard<std::mutex> threadGuard(m_threadMutex);
+            std::unique_lock<std::mutex> threadGuard(m_threadMutex);
 
             m_dataQueue.push(m_data++);
             std::cout<<m_data<<std::endl;

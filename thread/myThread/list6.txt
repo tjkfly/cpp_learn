@@ -1,0 +1,14 @@
+#include <iostream>
+#include <thread>
+
+
+int main()
+{
+    auto ThreadLamda = []
+    {
+        std::cout<<"this is lambda thread"<<std::endl;
+    };
+    std::thread t1(ThreadLamda);
+    t1.join();
+    return 0;
+}

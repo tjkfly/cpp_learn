@@ -1,0 +1,33 @@
+#include <iostream>
+#include <thread>
+void entranceThread(int &x)
+{
+    x = 10;
+    std::cout<<"input "<<x<<std::endl;
+}
+int main()
+{
+    int num = 1;
+    // 在传参数时候使用 std::ref()
+    std::thread t1(entranceThread,std::ref(num));
+    t1.join();
+    std::cout<<"Main: "<<num<<std::endl;
+    return 0;
+}
+//==================================================
+#include <iostream>
+#include <thread>
+
+void entranceThread(int *x)
+{
+    *x = 10;
+    std::cout<<"input "<<*x<<std::endl;
+}
+int main()
+{
+    int num = 1;
+    std::thread t1(entranceThread,&num);
+    t1.join();
+    std::cout<<"Main: "<<num<<std::endl;
+    return 0;
+}

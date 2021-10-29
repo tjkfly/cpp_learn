@@ -50,9 +50,18 @@ OBJECTS_DIR   = debug
 SOURCES       = ..\myThread\main.cpp 
 OBJECTS       = debug/main.o
 
-DIST          = list1 \
-		list2 \
-		list3 \
+DIST          = list1.txt \
+		list10.txt \
+		list11.txt \
+		list13.txt \
+		list2.txt \
+		list3.txt \
+		list4.txt \
+		list5.txt \
+		list6.txt \
+		list7.txt \
+		list8.txt \
+		list9.txt \
 		operator_说明  ..\myThread\main.cpp
 QMAKE_TARGET  = myThread
 DESTDIR        = debug\ #avoid trailing-slash linebreak

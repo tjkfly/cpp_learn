@@ -1,0 +1,25 @@
+#include <iostream>
+#include <thread>
+
+class ThreadClass
+{
+public:
+    void func1()     //子线程 1 入口
+    {
+        std::cout<<"Thread func1"<<std::endl;
+    }
+    void func2()     //子线程 2 入口
+    {
+        std::cout<<"\r\nThread func2"<<std::endl;
+    }
+};
+int main()
+{
+    ThreadClass T;
+    //注意参数的传递方式，先传入入口函数，然后传入类对象的this指针
+    std::thread t1(&ThreadClass::func1,&T);
+    std::thread t2(&ThreadClass::func2,&T);
+    t1.join();
+    t2.join();
+    return 0;
+}

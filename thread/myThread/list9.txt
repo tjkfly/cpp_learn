@@ -1,0 +1,36 @@
+#include <iostream>
+#include <thread>
+
+class ThreadClass
+{
+public:
+    ThreadClass()
+    {
+        m_data = 0;
+    }
+    void func1(int &x)     //子线程 1 入口
+    {
+        x = 11;
+        std::cout<<"\r\nThread func1 "<<x<<std::endl;
+
+    }
+    void func2(int &y)     //子线程 2 入口
+    {
+        y = 12;
+        std::this_thread::sleep_for(std::chrono::microseconds(5000));
+        std::cout<<"\r\nThread func2 "<<y<<std::endl;
+
+    }
+int m_data;
+};
+int main()
+{
+    ThreadClass T;
+    int num = 10;
+    //注意参数的传递方式，先传入入口函数，然后传入类对象的this指针
+    std::thread t1(&ThreadClass::func1,&T,std::ref(num));
+    //std::thread t2(&ThreadClass::func2,&T,std::ref(num));
+    t1.join();
+   // t2.join();
+    return 0;
+}
